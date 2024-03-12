@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sentiment analysis of Restaurant review</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.ico') }}"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Actor&display=swap" rel="stylesheet">
+	<meta name="description" content="Sentiment analysis of Restaurant review">
+    <meta name="author" content="Atharv Bagade">
+	<style type="text/css">
+		body{
+				background: url('https://source.unsplash.com/2000x900/?Restaurant') no-repeat top center;
+  				background-size: cover;
+  				height: 100vh;
+			}
+	</style>
+</head>
+
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<span class="contact100-form-symbol">
+				<img src="{{ url_for('static', filename='images/icons/symbol-01.png') }}" alt="SYMBOL-MAIL">
+			</span>
+
+          <!--Input review regardless of it being positive or negative-->
+			{% if result == 0 %}
+			<div class="alert alert-success" role="alert">
+                <center><b>Thank your for your feedback &nbsp;<img src="https://img.icons8.com/ios-filled/30/000000/facebook-like.png"/></b>
+                </center>
+            </div>
+            <hr>
+            <center><a href="/"><button type="button" class="btn btn-success">Back to Home</button></a></center>
+
+			{% elif result == 1 %}
+			<div class="alert alert-success" role="alert">
+                <center><b>Thank your for your feedback &nbsp;<img src="https://img.icons8.com/ios-filled/30/000000/facebook-like.png"/></b>
+                </center>
+            </div>
+            <hr>
+            <center><a href="/"><button type="button" class="btn btn-success">Back to Home</button></a></center>
+
+			{% else %}
+			<form class="contact100-form validate-form flex-sb flex-w" name="input" action="/result" method="POST">
+				<span class="contact100-form-title">
+					Drop a review
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<textarea class="input100" name="message" placeholder="Write Us A Review" required="complesary"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						Send
+					</button>
+				</div>
+			</form>	
+
+			{% endif %}
+</div>
+</div>
+
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
