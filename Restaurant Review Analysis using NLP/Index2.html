@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/Review.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Actor&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!--Check if reviews are given-->
+    {% if reviews|length > 0 %}
+    <div class="table-title">
+        <h3>Customer Reviews</h3>
+        </div>
+        <table class="table-fill">
+        <thead>
+        <tr>
+        <th class="text-left">Status</th>
+        <th class="text-left">Review</th>
+        </tr>
+        </thead>
+        <tbody class="table-hover">
+        <!--Map the reviews received from the app-->
+        {% for r in reviews %}
+        <tr>
+        <td class="text-left">{{ 'Negative' if r['result']==0 else 'Positive' }}</td>
+        <td class="text-left">{{ r['message'] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+        </tr>
+        </tbody>
+        </table>
+
+    {% else %}
+    <div>
+        No reviews 
+    </div>
+
+    {% endif %}
+
+</body>
+</html>
